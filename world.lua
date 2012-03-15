@@ -6,7 +6,7 @@ return function()
     local player_bullet = Bullet(400, 500, -200)
     Screen:add(player_bullet)
 
-    local swarm = Swarm(250, Consts.invader.side, 100)
+    local swarm = Swarm(250, Consts.invader.side, 100, player_bullet)
     Screen:add(swarm)
 
     await(50)

@@ -1,7 +1,6 @@
 return {
     bullet = {
-        radius = 5,
-        segments = 5
+        height = 25,
     },
     invader = {
         columns = 7,
