@@ -15,15 +15,20 @@ local function box(x, y)
 end
 
 local Bullet = function(...)
-    local function constructor(ix, iy, iv)
-	_v = iv
-	_y = iy + S(_v)
+    local function constructor(ix, iy, v)
+        _x = ix
+        _y = iy + S(v)
 
-	return {
-	    _box = L(box)(ix, _y),
-	    _draw_list = L(draw_list)(ix, _y),
-	    reload = reload
-	}
+        local function reload(x, y)
+            _x = x
+            _y = y + S(v)
+        end
+
+        return {
+            _box = L(box)(_x, _y),
+            _draw_list = L(draw_list)(_x, _y),
+            reload = reload
+        }
     end
 
     return meta.apply(constructor)(...)

@@ -21,7 +21,6 @@ end
 
 function love.keypressed(key)
     if app.state ~= 'ready' then
-	print("key." .. key)
         gvt.step(app, 'key.' .. key)
     end
 end
@@ -30,7 +29,7 @@ function love.update(dt)
     if app.state ~= 'ready' then
         gvt.step(app, 'dt', dt)
     elseif app.state ~= 'stopped' then
-	love.event.push('q')
+        love.event.push('q')
     end
 end
 

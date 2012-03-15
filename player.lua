@@ -43,6 +43,8 @@ local Player = function(...)
 
 	return {
 	    _draw_list = L(draw_list)(_x, _y),
+	    _x = _x,
+	    _y = _y,
 	    left = move(-1),
 	    right = move(1),
 	}

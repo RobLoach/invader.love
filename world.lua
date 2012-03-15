@@ -1,19 +1,32 @@
-local Bullet = require 'bullet'
 local Consts = require 'consts'
+
+local Bullet = require 'bullet'
 local Player = require 'player'
 local Swarm = require 'swarm'
 
 return function()
-    local player_bullet = Bullet(400, 500, -200)
+    local player_bullet = Bullet(-1, -1, Consts.bullet.v)
     Screen:add(player_bullet)
 
-    local swarm = Swarm(250, Consts.invader.side, 100, player_bullet)
+    local swarm = Swarm(Consts.screen.width -
+                            (Consts.invader.side * Consts.invader.columns) / 2,
+                        Consts.invader.side,
+                        Consts.invader.speed,
+                        player_bullet)
     Screen:add(swarm)
 
-    local player = Player(400, 600 - (Consts.invader.side * 1.5), 100)
+    local player = Player(Consts.screen.width / 2,
+                          Consts.screen.height - (Consts.invader.side * 1.5),
+                          Consts.player.speed)
+    Screen:add(player)
     link('key.left', player.left)
     link('key.right', player.right)
-    Screen:add(player)
+
+    local function shoot()
+        player_bullet.reload(player._x(), player._y())
+    end
+    link('key. ', shoot)
+    link('key.up', shoot)
 
     await('key.escape')
 end
