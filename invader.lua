@@ -16,8 +16,12 @@ local function draw_list(alive, x, y)
     end
 end
 
-local function bounced(x)
-    return x <= 0 or (x + Consts.invader.side) >= Consts.screen.width
+local function bounced(alive, x)
+    if alive then
+        return x <= 0 or (x + Consts.invader.side) >= Consts.screen.width
+    else
+        return false
+    end
 end
 
 local function box(x, y)
@@ -30,30 +34,31 @@ local function colliding(ibox, bbox)
     return ibox.x < bx2 and ax2 > bbox.x and ibox.y < by2 and ay2 > bbox.y
 end
 
-local function alive()
-    local been_hit = false
+local Invader = function(...)
+    local function constructor(n, sx, sy, player_bullet)
+        local col = n % Consts.invader.columns
+        local row = math.floor(n / Consts.invader.columns)
 
-    return function(hit)
-        been_hit = been_hit or hit
-        return not been_hit
+        _x = (col * (Consts.invader.side * 2)) + sx
+        _y = (row * (Consts.invader.side * 1.5)) + sy
+
+        _box = L(box)(_x, _y)
+        _hit = L(colliding)(_box, player_bullet._box)
+        _alive = true
+
+	local function die(when)
+	    await(cond(when))
+	    _alive = false
+	end
+	spawn(die, _hit)
+
+        return {
+            _draw_list=L(draw_list)(_alive, _x, _y),
+            _bounced=L(bounced)(_alive, _x)
+        }
     end
+
+    return meta.apply(constructor)(...)
 end
-
-local Invader = meta.apply(function(n, sx, sy, player_bullet)
-    local col = n % Consts.invader.columns
-    local row = math.floor(n / Consts.invader.columns)
-
-    local _x = (col * (Consts.invader.side * 2)) + sx
-    local _y = (row * (Consts.invader.side * 1.5)) + sy
-
-    local _box = L(box)(_x, _y)
-    local _hit = L(colliding)(_box, player_bullet._box)
-    local _alive = L(alive())(_hit)
-
-    return {
-        _draw_list=L(draw_list)(_alive, _x, _y),
-        _bounced=L(bounced)(_x)
-    }
-end)
-
+    
 return Invader
