@@ -32,14 +32,18 @@ function M.run()
         return x <= 0 or (x + INVADER_SIDE) >= Screen.width
     end
 
+    function invader_spawn(n)
+        local x = L(invader_x)(n, _x)
+        local y = L(invader_y)(n, _y)
+	return {
+            x = x, y = y,
+            bounced = L(invader_bounced)(x),
+            sid = Screen:add(L(invader_draw)(x, y))
+        }
+    end
+
     invaders = U.range(0, INVADER_ROWS * INVADER_COLUMNS - 1)
-      :map(function(n)
-          local x = L(invader_x)(n, _x)
-          local y = L(invader_y)(n, _y)
-          local bounced = L(invader_bounced)(x)
-          local sid = Screen:add(L(invader_draw)(x, y))
-          return {n=n, x=x, y=y, bounced=bounced, sid=sid}
-      end)
+      :map(invader_spawn)
 
     function invaders_bounced(...)
         return U.reduce(arg, false, function(c, i)
