@@ -4,12 +4,16 @@ local meta = require 'luagravity.meta'
 
 local Consts = require 'consts'
 
-local function draw_list(x, y)
-    return {{
-        'rectangle', 'line',
-        x, y,
-        Consts.invader.side, Consts.invader.side
-    }}
+local function draw_list(alive, x, y)
+    if alive then
+        return {{
+            'rectangle', 'line',
+            x, y,
+            Consts.invader.side, Consts.invader.side
+        }}
+    else
+        return {}
+    end
 end
 
 local function bounced(x)
@@ -26,6 +30,15 @@ local function colliding(ibox, bbox)
     return ibox.x < bx2 and ax2 > bbox.x and ibox.y < by2 and ay2 > bbox.y
 end
 
+local function alive()
+    local been_hit = false
+
+    return function(hit)
+        been_hit = been_hit or hit
+        return not been_hit
+    end
+end
+
 local Invader = meta.apply(function(n, sx, sy, player_bullet)
     local col = n % Consts.invader.columns
     local row = math.floor(n / Consts.invader.columns)
@@ -35,9 +48,10 @@ local Invader = meta.apply(function(n, sx, sy, player_bullet)
 
     local _box = L(box)(_x, _y)
     local _hit = L(colliding)(_box, player_bullet._box)
+    local _alive = L(alive())(_hit)
 
     return {
-        _draw_list=L(draw_list)(_x, _y),
+        _draw_list=L(draw_list)(_alive, _x, _y),
         _bounced=L(bounced)(_x)
     }
 end)
