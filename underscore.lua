@@ -296,6 +296,22 @@ function Underscore.funcs.join(array, separator)
 	return table.concat(array, separator)
 end
 
+function Underscore.funcs.concat(array)
+    local all = {}
+
+    for i in Underscore.iter(array) do
+        if type(i) == "table" then
+            for j in Underscore.iter(i) do
+                all[#all+1] = j
+            end
+        else
+            all[#all+1] = i
+        end
+    end
+
+    return all
+end
+
 -- objects
 
 function Underscore.funcs.keys(obj)
