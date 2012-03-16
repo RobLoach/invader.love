@@ -32,7 +32,7 @@ local Swarm = function(...)
         local function bounce()
             await(cond(_bounced))
             _v = _v() * -1
-            _y = _y() + Consts.invader.side / 4
+            _y = _y() + Consts.invader.close
             return bounce()
         end
         spawn(bounce)

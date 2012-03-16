@@ -18,6 +18,7 @@ C.invader = {
         y = 1.5,
     },
 }
+C.invader.close = C.invader.side / 4
 
 C.swarm = {
     columns = 7,
