@@ -28,10 +28,10 @@ local function box(x, y)
     return {x=x, y=y, width=Consts.invader.side, height=Consts.invader.side}
 end
 
-local function colliding(ibox, bbox)
-    local ax2, ay2 = ibox.x + ibox.width, ibox.y + ibox.height
+local function colliding(abox, bbox)
+    local ax2, ay2 = abox.x + abox.width, abox.y + abox.height
     local bx2, by2 = bbox.x + bbox.width, bbox.y + bbox.height
-    return ibox.x < bx2 and ax2 > bbox.x and ibox.y < by2 and ay2 > bbox.y
+    return abox.x < bx2 and ax2 > bbox.x and abox.y < by2 and ay2 > bbox.y
 end
 
 local Invader = function(...)
