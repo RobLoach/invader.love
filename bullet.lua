@@ -15,14 +15,8 @@ local Bullet = function(...)
         _x = ix
         _y = iy + S(v)
 
-        local function shoot(x, y)
-            _x = x
-            _y = y + S(v)
-        end
-
         return {
             _draw_list = L(draw_list)(_x, _y),
-            shoot = shoot,
         }
     end
 
