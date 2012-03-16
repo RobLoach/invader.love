@@ -12,8 +12,6 @@ C.bullet = {
 }
 
 C.invader = {
-    columns = 7,
-    rows = 11,
     side = 25,
     spacing = {
         x = 2,
@@ -23,11 +21,14 @@ C.invader = {
 }
 
 C.swarm = {
-    initial = {
-        x = (C.screen.width / 2) - ((C.invader.side * C.invader.spacing.x) * C.invader.columns) / 2,
-        y = C.invader.side,
-    },
+    columns = 7,
+    rows = 11,
 }
+C.swarm.initial = {
+    x = (C.screen.width / 2) - ((C.invader.side * C.invader.spacing.x) * C.swarm.columns) / 2,
+    y = C.invader.side,
+}
+C.swarm.number = C.swarm.rows * C.swarm.columns
 
 C.player = {
     width = 25 * 1.5,

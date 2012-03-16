@@ -20,9 +20,9 @@ local Swarm = function(...)
         _x = ix + S(_v)
         _y = iy
 
-        local invaders = __.range(0, Consts.invader.rows * Consts.invader.columns - 1)
+        local invaders = __.range(1, Consts.swarm.number)
             :map(function(n)
-                return Invader(n, _x, _y, bullet)
+                return Invader(n - 1, _x, _y, bullet)
             end)
         
         _bounced = __.reduce(invaders, false, function(c, i)

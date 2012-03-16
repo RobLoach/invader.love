@@ -36,8 +36,8 @@ end
 
 local Invader = function(...)
     local function constructor(n, sx, sy, bullet)
-        local col = n % Consts.invader.columns
-        local row = math.floor(n / Consts.invader.columns)
+        local col = n % Consts.swarm.columns
+        local row = math.floor(n / Consts.swarm.columns)
 
         _x = (col * (Consts.invader.side * Consts.invader.spacing.x)) + sx
         _y = (row * (Consts.invader.side * Consts.invader.spacing.y)) + sy
