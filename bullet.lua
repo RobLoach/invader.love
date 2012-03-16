@@ -10,10 +10,6 @@ local function draw_list(x, y)
     }
 end
 
-local function box(x, y)
-    return {x=x, y=y, width=C.bullet.width, height=C.bullet.height}
-end
-
 local Bullet = function(...)
     local function constructor(ix, iy, v)
         _x = ix
@@ -25,7 +21,6 @@ local Bullet = function(...)
         end
 
         return {
-            _box = L(box)(_x, _y),
             _draw_list = L(draw_list)(_x, _y),
             shoot = shoot,
         }

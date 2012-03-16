@@ -10,8 +10,7 @@ return function()
     local bullet = Bullet(-1, -1, C.bullet.v)
 
     local swarm = Swarm(C.swarm.initial.x,
-                        C.swarm.initial.y,
-                        bullet)
+                        C.swarm.initial.y)
 
     local player = Player(C.player.initial.x,
                           C.player.initial.y)

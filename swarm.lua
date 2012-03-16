@@ -15,14 +15,14 @@ local function draw_list(invaders, x, y)
 end
 
 local Swarm = function(...)
-    local function constructor(ix, iy, bullet)
+    local function constructor(ix, iy)
         _v = C.swarm.speed
         _x = ix + S(_v)
         _y = iy
 
         local invaders = __.range(1, C.swarm.number)
             :map(function(n)
-                return Invader(n - 1, _x, _y, bullet)
+                return Invader(n - 1, _x, _y)
             end)
 
         _bounced = __.reduce(invaders, false, function(c, i)
