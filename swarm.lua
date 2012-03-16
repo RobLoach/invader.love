@@ -30,12 +30,10 @@ local Swarm = function(...)
         end)
 
         local function bounce()
-            await(cond(_bounced))
             _v = _v() * -1
             _y = _y() + Consts.invader.close
-            return bounce()
         end
-        spawn(bounce)
+	link(cond(_bounced), bounce)
 
         return {_draw_list=L(draw_list)(invaders, _x, _y)}
     end
