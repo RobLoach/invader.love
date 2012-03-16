@@ -47,10 +47,9 @@ local Invader = function(...)
         _alive = true
 
         local function die()
-            await(cond(_hit))
             _alive = false
         end
-        spawn(die)
+        link(cond(_hit), die)
 
         return {
             _draw_list=L(draw_list)(_alive, _x, _y),
