@@ -14,14 +14,14 @@ local function draw_list(invaders, x, y)
 end
 
 local Swarm = function(...)
-    local function constructor(ix, iy, iv, player_bullet)
+    local function constructor(ix, iy, iv, bullet)
         _v = iv
         _x = ix + S(_v)
         _y = iy
 
         local invaders = __.range(0, Consts.invader.rows * Consts.invader.columns - 1)
             :map(function(n)
-                return Invader(n, _x, _y, player_bullet)
+                return Invader(n, _x, _y, bullet)
             end)
         
         _bounced = __.reduce(invaders, false, function(c, i)

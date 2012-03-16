@@ -35,7 +35,7 @@ local function colliding(ibox, bbox)
 end
 
 local Invader = function(...)
-    local function constructor(n, sx, sy, player_bullet)
+    local function constructor(n, sx, sy, bullet)
         local col = n % Consts.invader.columns
         local row = math.floor(n / Consts.invader.columns)
 
@@ -43,7 +43,7 @@ local Invader = function(...)
         _y = (row * (Consts.invader.side * Consts.invader.x_spacing)) + sy
 
         _box = L(box)(_x, _y)
-        _hit = L(colliding)(_box, player_bullet._box)
+        _hit = L(colliding)(_box, bullet._box)
         _alive = true
 
         local function die(when)
