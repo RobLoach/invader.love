@@ -5,14 +5,6 @@ local meta = require 'luagravity.meta'
 local world = require 'world'
 
 local screen = {}
-function screen:add(cmd)
-    table.insert(self, cmd)
-    return #self
-end
-
-function screen:remove(idx)
-    self[idx] = nil
-end
 
 function love.load()
     w = meta.apply(world, {Screen=screen})
