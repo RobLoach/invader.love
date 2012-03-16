@@ -26,11 +26,9 @@ function love.update(dt)
 end
 
 function love.draw()
-    for i, v in pairs(screen) do
-        if type(i) == 'number' then
-            __.map(v:_draw_list(), function(dl)
-                love.graphics[dl[1]](unpack(dl, 2))
-            end)
-        end
+    for o in __.iter(screen) do
+        __.map(o:_draw_list(), function(d)
+            love.graphics[d[1]](unpack(d, 2))
+        end)
     end
 end
