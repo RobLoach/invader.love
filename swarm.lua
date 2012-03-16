@@ -16,7 +16,7 @@ end
 local Swarm = function(...)
     local function constructor(ix, iy, iv, player_bullet)
         _v = iv
-        _x = 250 + S(_v)
+        _x = ix + S(_v)
         _y = iy
 
         local invaders = __.range(0, Consts.invader.rows * Consts.invader.columns - 1)
@@ -27,7 +27,7 @@ local Swarm = function(...)
         local function bounce(when)
             await(cond(when))
             _v = _v() * -1
-            _y = _y() + 1
+            _y = _y() + Consts.invader.side / 4
             return bounce(when)
         end
         local function any(...) return __.any(arg) end

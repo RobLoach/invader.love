@@ -8,7 +8,9 @@ return {
         columns = 7,
         rows = 11,
         side = 25,
-        speed = 100
+        x_spacing = 1.5,
+        y_spacing = 2,
+        speed = 100,
     },
     player = {
         width = 25 * 1.5,
