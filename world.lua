@@ -14,8 +14,6 @@ return function()
 
     local player = Player(C.player.initial.x,
                           C.player.initial.y)
-    link('key.left', player.left)
-    link('key.right', player.right)
 
     __.extend(Screen, {bullet, swarm, player})
 
