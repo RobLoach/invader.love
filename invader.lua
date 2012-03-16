@@ -46,11 +46,11 @@ local Invader = function(...)
         _hit = L(colliding)(_box, bullet._box)
         _alive = true
 
-        local function die(when)
-            await(cond(when))
+        local function die()
+            await(cond(_hit))
             _alive = false
         end
-        spawn(die, _hit)
+        spawn(die)
 
         return {
             _draw_list=L(draw_list)(_alive, _x, _y),
