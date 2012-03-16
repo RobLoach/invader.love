@@ -39,8 +39,8 @@ local Invader = function(...)
         local col = n % Consts.invader.columns
         local row = math.floor(n / Consts.invader.columns)
 
-        _x = (col * (Consts.invader.side * Consts.invader.y_spacing)) + sx
-        _y = (row * (Consts.invader.side * Consts.invader.x_spacing)) + sy
+        _x = (col * (Consts.invader.side * Consts.invader.spacing.x)) + sx
+        _y = (row * (Consts.invader.side * Consts.invader.spacing.y)) + sy
 
         _box = L(box)(_x, _y)
         _hit = L(colliding)(_box, bullet._box)

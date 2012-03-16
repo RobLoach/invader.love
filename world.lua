@@ -9,9 +9,8 @@ local Swarm = require 'swarm'
 return function()
     local bullet = Bullet(-1, -1, Consts.bullet.v)
 
-    local swarm = Swarm((Consts.screen.width / 2) -
-                            ((Consts.invader.side * Consts.invader.x_spacing) * Consts.invader.columns) / 2,
-                        Consts.invader.side,
+    local swarm = Swarm(Consts.swarm.initial.x,
+                        Consts.swarm.initial.y,
                         Consts.invader.speed,
                         bullet)
 
