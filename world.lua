@@ -3,7 +3,6 @@ local __ = require 'underscore'
 local C = require 'consts'
 
 local Bullet = require 'bullet'
-local Player = require 'player'
 local Swarm = require 'swarm'
 
 return function()
@@ -12,10 +11,7 @@ return function()
     local swarm = Swarm(C.swarm.initial.x,
                         C.swarm.initial.y)
 
-    local player = Player(C.player.initial.x,
-                          C.player.initial.y)
-
-    __.extend(Screen, {bullet, swarm, player})
+    __.extend(Screen, {bullet, swarm})
 
     await('key.escape')
 end
