@@ -23,15 +23,18 @@ local Swarm = function(...)
             :map(function(n)
                 return Invader(n, _x, _y, player_bullet)
             end)
-
-        local function bounce(when)
-            await(cond(when))
+        
+        _bounced = __.reduce(invaders, false, function(c, i)
+            return OR(c, i._bounced)
+        end)
+            
+        local function bounce()
+            await(cond(_bounced))
             _v = _v() * -1
             _y = _y() + Consts.invader.side / 4
-            return bounce(when)
+            return bounce()
         end
-        local function any(...) return __.any(arg) end
-        spawn(bounce, L(any)(unpack(__.pluck(invaders, '_bounced'))))
+        spawn(bounce)
 
         return {_draw_list=L(draw_list)(invaders, _x, _y)}
     end
