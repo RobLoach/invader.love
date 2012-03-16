@@ -60,5 +60,5 @@ local Invader = function(...)
 
     return meta.apply(constructor)(...)
 end
-    
+
 return Invader

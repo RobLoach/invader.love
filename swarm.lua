@@ -24,11 +24,11 @@ local Swarm = function(...)
             :map(function(n)
                 return Invader(n - 1, _x, _y, bullet)
             end)
-        
+
         _bounced = __.reduce(invaders, false, function(c, i)
             return OR(c, i._bounced)
         end)
-            
+
         local function bounce()
             await(cond(_bounced))
             _v = _v() * -1
