@@ -2,7 +2,7 @@ return {
     bullet = {
         height = 25,
         width = 3,
-        v = -200
+        v = -200,
     },
     invader = {
         columns = 7,
@@ -15,10 +15,10 @@ return {
     player = {
         width = 25 * 1.5,
         height = 25,
-        speed = 150
+        speed = 150,
     },
     screen = {
         width = love.graphics.getWidth(),
-        height = love.graphics.getHeight()
+        height = love.graphics.getHeight(),
     },
 }
