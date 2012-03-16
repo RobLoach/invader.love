@@ -11,6 +11,7 @@ local function draw_list(invaders, x, y)
             return i:_draw_list()
         end)
         :concat()
+        :value()
 end
 
 local Swarm = function(...)

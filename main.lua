@@ -26,9 +26,12 @@ function love.update(dt)
 end
 
 function love.draw()
-    for o in __.iter(screen) do
-        __.map(o:_draw_list(), function(d)
-            love.graphics[d[1]](unpack(d, 2))
-        end)
-    end
+    __(screen):chain()
+      :map(function(o)
+          return o:_draw_list()
+      end)
+      :concat()
+      :each(function(d)
+          love.graphics[d[1]](unpack(d, 2))
+      end)
 end
