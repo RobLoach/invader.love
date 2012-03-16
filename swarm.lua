@@ -25,16 +25,6 @@ local Swarm = function(...)
                 return Invader(n - 1, _x, _y)
             end)
 
-        _bounced = __.reduce(invaders, false, function(c, i)
-            return OR(c, i._bounced)
-        end)
-
-        local function bounce()
-            _v = _v() * -1
-            _y = _y() + C.invader.close
-        end
-	link(cond(_bounced), bounce)
-
         return {_draw_list=L(draw_list)(invaders, _x, _y)}
     end
 
