@@ -35,5 +35,9 @@ C.player = {
     height = 25,
     speed = 150,
 }
+C.player.initial = {
+    x = C.screen.width / 2,
+    y = C.screen.height - C.player.height - 1,
+}
 
 return C

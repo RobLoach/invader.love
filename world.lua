@@ -13,8 +13,8 @@ return function()
                         Consts.swarm.initial.y,
                         bullet)
 
-    local player = Player(Consts.screen.width / 2,
-                          Consts.screen.height - Consts.player.height - 1)
+    local player = Player(Consts.player.initial.x,
+                          Consts.player.initial.y)
     link('key.left', player.left)
     link('key.right', player.right)
 
