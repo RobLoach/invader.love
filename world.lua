@@ -11,12 +11,10 @@ return function()
 
     local swarm = Swarm(Consts.swarm.initial.x,
                         Consts.swarm.initial.y,
-                        Consts.invader.speed,
                         bullet)
 
     local player = Player(Consts.screen.width / 2,
-                          Consts.screen.height - Consts.player.height - 1,
-                          Consts.player.speed)
+                          Consts.screen.height - Consts.player.height - 1)
     link('key.left', player.left)
     link('key.right', player.right)
 

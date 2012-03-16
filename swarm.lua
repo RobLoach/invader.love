@@ -15,8 +15,8 @@ local function draw_list(invaders, x, y)
 end
 
 local Swarm = function(...)
-    local function constructor(ix, iy, iv, bullet)
-        _v = iv
+    local function constructor(ix, iy, bullet)
+        _v = Consts.swarm.speed
         _x = ix + S(_v)
         _y = iy
 

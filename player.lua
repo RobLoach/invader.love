@@ -11,28 +11,26 @@ local function draw_list(x, y)
     }}
 end
 
-local function v(speed)
-    return function(dir, x)
-        if x then
-            if (x <= Consts.player.width and dir < 0) or
-                (x >= Consts.screen.width - Consts.player.width and dir > 0) then
-                return 0
-            else
-                return speed * dir
-            end
-        else
+local function v(dir, x)
+    if x then
+        if (x <= Consts.player.width and dir < 0) or
+            (x >= Consts.screen.width - Consts.player.width and dir > 0) then
             return 0
+        else
+            return Consts.player.speed * dir
         end
+    else
+        return 0
     end
 end
 
 local Player = function(...)
-    local function constructor(ix, iy, speed)
+    local function constructor(ix, iy)
         _dir = 0
         _x = ix
         _y = iy
 
-        _v = L(v(speed))(_dir, delay(_x))
+        _v = L(v)(_dir, delay(_x))
         _x = ix + S(_v)
 
         local function move(d)

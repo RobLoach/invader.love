@@ -17,12 +17,12 @@ C.invader = {
         x = 2,
         y = 1.5,
     },
-    speed = 100,
 }
 
 C.swarm = {
     columns = 7,
     rows = 11,
+    speed = 100,
 }
 C.swarm.initial = {
     x = (C.screen.width / 2) - ((C.invader.side * C.invader.spacing.x) * C.swarm.columns) / 2,
