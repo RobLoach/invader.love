@@ -1,17 +1,17 @@
 local meta = require 'luagravity.meta'
 
-local Consts = require 'consts'
+local C = require 'consts'
 
 local function draw_list(x, y)
     return {
-        {'setLineWidth', Consts.bullet.width},
-        {'line', x, y, x, y + Consts.bullet.height},
+        {'setLineWidth', C.bullet.width},
+        {'line', x, y, x, y + C.bullet.height},
         {'setLineWidth', 1},
     }
 end
 
 local function box(x, y)
-    return {x=x, y=y, width=Consts.bullet.width, height=Consts.bullet.height}
+    return {x=x, y=y, width=C.bullet.width, height=C.bullet.height}
 end
 
 local Bullet = function(...)

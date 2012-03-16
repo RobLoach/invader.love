@@ -2,14 +2,14 @@ local __ = require 'underscore'
 local math = math
 local meta = require 'luagravity.meta'
 
-local Consts = require 'consts'
+local C = require 'consts'
 
 local function draw_list(alive, x, y)
     if alive then
         return {{
             'rectangle', 'line',
             x, y,
-            Consts.invader.side, Consts.invader.side,
+            C.invader.side, C.invader.side,
         }}
     else
         return {}
@@ -18,14 +18,14 @@ end
 
 local function bounced(alive, x)
     if alive then
-        return x <= 0 or (x + Consts.invader.side) >= Consts.screen.width
+        return x <= 0 or (x + C.invader.side) >= C.screen.width
     else
         return false
     end
 end
 
 local function box(x, y)
-    return {x=x, y=y, width=Consts.invader.side, height=Consts.invader.side}
+    return {x=x, y=y, width=C.invader.side, height=C.invader.side}
 end
 
 local function colliding(abox, bbox)
@@ -36,11 +36,11 @@ end
 
 local Invader = function(...)
     local function constructor(n, sx, sy, bullet)
-        local col = n % Consts.swarm.columns
-        local row = math.floor(n / Consts.swarm.columns)
+        local col = n % C.swarm.columns
+        local row = math.floor(n / C.swarm.columns)
 
-        _x = (col * (Consts.invader.side * Consts.invader.spacing.x)) + sx
-        _y = (row * (Consts.invader.side * Consts.invader.spacing.y)) + sy
+        _x = (col * (C.invader.side * C.invader.spacing.x)) + sx
+        _y = (row * (C.invader.side * C.invader.spacing.y)) + sy
 
         _box = L(box)(_x, _y)
         _hit = L(colliding)(_box, bullet._box)

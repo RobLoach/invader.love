@@ -1,26 +1,26 @@
 local __ = require 'underscore'
 
-local Consts = require 'consts'
+local C = require 'consts'
 
 local Bullet = require 'bullet'
 local Player = require 'player'
 local Swarm = require 'swarm'
 
 return function()
-    local bullet = Bullet(-1, -1, Consts.bullet.v)
+    local bullet = Bullet(-1, -1, C.bullet.v)
 
-    local swarm = Swarm(Consts.swarm.initial.x,
-                        Consts.swarm.initial.y,
+    local swarm = Swarm(C.swarm.initial.x,
+                        C.swarm.initial.y,
                         bullet)
 
-    local player = Player(Consts.player.initial.x,
-                          Consts.player.initial.y)
+    local player = Player(C.player.initial.x,
+                          C.player.initial.y)
     link('key.left', player.left)
     link('key.right', player.right)
 
     local function shoot()
         bullet.shoot(player._x(),
-                     player._y() - Consts.bullet.height / 2)
+                     player._y() - C.bullet.height / 2)
     end
     link('key. ', shoot)
     link('key.up', shoot)

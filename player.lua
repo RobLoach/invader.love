@@ -1,23 +1,23 @@
 local meta = require 'luagravity.meta'
 
-local Consts = require 'consts'
+local C = require 'consts'
 
 local function draw_list(x, y)
     return {{
         'triangle', 'line',
         x, y,
-        x + Consts.player.width, y + Consts.player.height,
-        x - Consts.player.width, y + Consts.player.height,
+        x + C.player.width, y + C.player.height,
+        x - C.player.width, y + C.player.height,
     }}
 end
 
 local function v(dir, x)
     if x then
-        if (x <= Consts.player.width and dir < 0) or
-            (x >= Consts.screen.width - Consts.player.width and dir > 0) then
+        if (x <= C.player.width and dir < 0) or
+            (x >= C.screen.width - C.player.width and dir > 0) then
             return 0
         else
-            return Consts.player.speed * dir
+            return C.player.speed * dir
         end
     else
         return 0
