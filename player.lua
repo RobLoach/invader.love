@@ -7,7 +7,7 @@ local function draw_list(x, y)
         'triangle', 'line',
         x, y,
         x + Consts.player.width, y + Consts.player.height,
-        x - Consts.player.width, y + Consts.player.height
+        x - Consts.player.width, y + Consts.player.height,
     }}
 end
 

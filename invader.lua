@@ -9,7 +9,7 @@ local function draw_list(alive, x, y)
         return {{
             'rectangle', 'line',
             x, y,
-            Consts.invader.side, Consts.invader.side
+            Consts.invader.side, Consts.invader.side,
         }}
     else
         return {}
@@ -54,7 +54,7 @@ local Invader = function(...)
 
         return {
             _draw_list=L(draw_list)(_alive, _x, _y),
-            _bounced=L(bounced)(_alive, _x)
+            _bounced=L(bounced)(_alive, _x),
         }
     end
 
