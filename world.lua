@@ -2,12 +2,13 @@ local __ = require 'underscore'
 
 local C = require 'consts'
 
-local Bullet = require 'bullet'
-
 return function()
-    local bullet = Bullet(500, 500, C.bullet.v)
+    local thing = {}
+    function thing:_draw_list()
+        return {{'rectangle', 'line', 10, 10, 500, 500}}
+    end
 
-    __.extend(Screen, {bullet})
+    __.extend(Screen, {thing})
 
     await('key.escape')
 end
