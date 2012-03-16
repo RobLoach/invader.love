@@ -23,7 +23,7 @@ return function()
     link('key.right', player.right)
 
     local function shoot()
-        player_bullet.reload(player._x(), player._y() - Consts.bullet.height / 2)
+        player_bullet.shoot(player._x(), player._y() - Consts.bullet.height / 2)
     end
     link('key. ', shoot)
     link('key.up', shoot)

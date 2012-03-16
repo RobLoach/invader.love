@@ -19,7 +19,7 @@ local Bullet = function(...)
         _x = ix
         _y = iy + S(v)
 
-        local function reload(x, y)
+        local function shoot(x, y)
             _x = x
             _y = y + S(v)
         end
@@ -27,7 +27,7 @@ local Bullet = function(...)
         return {
             _box = L(box)(_x, _y),
             _draw_list = L(draw_list)(_x, _y),
-            reload = reload
+            shoot = shoot,
         }
     end
 
